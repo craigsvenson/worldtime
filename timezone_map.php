@@ -176,6 +176,7 @@ foreach ($offsetToTz as $offsetMin => $tz) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>World Time Converter & Scheduler</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>%F0%9F%8C%8D</text></svg>">
     <script>
         // Craig: "does the grid persist through browser restarts ?" -> "no
         // -- state only lives in the URL" -> "yes, add localStorage
