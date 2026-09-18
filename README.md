@@ -73,3 +73,11 @@ done
 
 Verify with a re-download + diff before trusting a deploy — FTP failures can
 fail silently if you don't check curl's exit code.
+
+## Credits
+
+Built by [Claude](https://claude.com/claude-code), Anthropic's AI coding
+assistant, working with Craig Svenson.
+
+The world map (`worldmap.svg`) is [BlankMap-Equirectangular](https://commons.wikimedia.org/wiki/File:BlankMap-Equirectangular.svg)
+from Wikimedia Commons, public domain.
