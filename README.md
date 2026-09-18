@@ -5,6 +5,8 @@ map for adding timezones instead of a plain dropdown.
 
 **Live**: https://tickermetrix.com/other/timezone_map.php
 
+**License**: [Unlicense](LICENSE) — public domain, use/modify for anything, no restrictions.
+
 ## Features
 
 - **Time grid** — compare any number of timezones side by side, hour-by-hour,
