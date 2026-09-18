@@ -101,10 +101,22 @@ function getOffsetStr(string $targetTzIdentifier, DateTime $baseDateTime): strin
 // sorted list of every standard UTC offset actually in use, half-hour
 // ones included (India +5:30, Newfoundland -3:30, Iran +3:30,
 // Afghanistan +4:30, Myanmar +6:30, the Northern Territory +9:30, Lord
-// Howe Island +10:30, the Marquesas -9:30). Quarter-hour zones (Nepal
-// +5:45, Chatham Islands +12:45) are still left out -- Craig's own ask
-// was specifically "half hour", and those two are rare enough edge cases
-// that pulling them in isn't worth it without being asked.
+// Howe Island +10:30, the Marquesas -9:30).
+//
+// Craig: "add a quarter hour zone ? are there quarter hour zones ?" --
+// yes, exactly two real ones: Nepal (+5:45) and the Chatham Islands, NZ
+// (+12:45). Nepal is added below -- it fits the existing model fine,
+// slotting between India (+5:30) and Bangladesh (+6:00) same as any other
+// entry. Chatham Islands is NOT added (Craig's own choice, asked first):
+// this whole band system treats offset-minutes as directly proportional
+// to map longitude (1 degree = 4 minutes), and the map only spans -12:00
+// to +12:00 (a flat 360-degree-wide equirectangular projection) --
+// +12:45 computes to 191.25 degrees, past the map's right edge entirely.
+// Real-world offsets go up to +14:00 (Kiribati) for date-line-convenience
+// reasons that don't correspond to real geographic longitude, which this
+// offset=longitude model can't represent without a bigger change (placing
+// a zone like that by its REAL longitude instead, wrapping around near
+// the left edge next to UTC-12 -- not attempted here).
 //
 // KEY IS THE STANDARD (non-DST) OFFSET IN MINUTES, not hours -- and it's
 // used ONLY to decide where a zone's band SITS on the map, which must
@@ -123,7 +135,7 @@ $offsetToTz = [
     -120 => 'Atlantic/South_Georgia', -60 => 'Atlantic/Azores', 0 => 'Europe/London',
     60 => 'Europe/Paris', 120 => 'Africa/Cairo', 180 => 'Europe/Moscow',
     210 => 'Asia/Tehran', 240 => 'Asia/Dubai', 270 => 'Asia/Kabul',
-    300 => 'Asia/Karachi', 330 => 'Asia/Kolkata', 360 => 'Asia/Dhaka',
+    300 => 'Asia/Karachi', 330 => 'Asia/Kolkata', 345 => 'Asia/Kathmandu', 360 => 'Asia/Dhaka',
     390 => 'Asia/Yangon', 420 => 'Asia/Bangkok', 480 => 'Asia/Shanghai',
     540 => 'Asia/Tokyo', 570 => 'Australia/Darwin', 600 => 'Australia/Sydney',
     630 => 'Australia/Lord_Howe', 660 => 'Pacific/Noumea', 720 => 'Pacific/Auckland',
