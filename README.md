@@ -59,25 +59,9 @@ state for whatever date is picked.
 Deliberately out of scope: quarter-hour zones (Nepal +5:45, Chatham Islands
 +12:45) — rare enough that they weren't worth pulling in without being asked.
 
-## Deploying
-
-No build step — FTP the 3 files straight to the site's `other/` directory:
-
-```bash
-FTP_USER="claudeai@tickermetrix.com"
-FTP_PASS="..."  # from screening/claudeai.ftp, not committed anywhere
-for f in .htaccess timezone_map.php worldmap.svg; do
-  curl -sf --ftp-create-dirs -T "$f" "ftp://tickermetrix.com/other/$f" --user "${FTP_USER}:${FTP_PASS}"
-done
-```
-
-Verify with a re-download + diff before trusting a deploy — FTP failures can
-fail silently if you don't check curl's exit code.
-
 ## Credits
 
-Built by [Claude](https://claude.com/claude-code), Anthropic's AI coding
-assistant, working with Craig Svenson.
+Built by [Claude](https://claude.com/claude-code), Anthropic's AI coding assistant, working with human guidance.
 
 The world map (`worldmap.svg`) is [BlankMap-Equirectangular](https://commons.wikimedia.org/wiki/File:BlankMap-Equirectangular.svg)
 from Wikimedia Commons, public domain.
